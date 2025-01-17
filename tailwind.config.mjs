@@ -6,12 +6,23 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontSize: {
+      "base": "22px",
+      "md": "22px",
+      "lg": "28px",
+      "xl": "50px",
+      "2xl": "62px",
+    },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "coral": "#F4A88E",
+        "ash": "#E4E4E4"
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addVariant }) {
+      addVariant("peer-not-empty", "&:not([value=''])")
+    }
+  ],
 };

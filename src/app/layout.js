@@ -1,3 +1,4 @@
+import Navigation from "@/components/navigation"
 import "./globals.css"
 
 export const metadata = {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       <body
         className="antialiased"
       >
+        <Navigation />
         {children}
       </body>
     </html>

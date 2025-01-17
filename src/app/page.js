@@ -9,8 +9,8 @@ export default async function Home() {
     <>
       <h1>Classes</h1>
       {classes.map((singleClass, i) => (
-        <Link href={`/class/${singleClass.id}`}>
-          <article key={i}>
+        <Link key={i} href={`/class/${singleClass.id}`}>
+          <article>
             <h2>{singleClass.className}</h2>
           </article>
         </Link>

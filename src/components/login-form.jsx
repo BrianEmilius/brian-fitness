@@ -1,9 +1,10 @@
 "use client"
 import Login from "@/actions/login"
 import { useActionState, useEffect } from "react"
+import PacmanLoader from "react-spinners/PacmanLoader"
 
 export default function LoginForm({ formVisible }) {
-	const [formState, formAction] = useActionState(Login)
+	const [formState, formAction, isPending] = useActionState(Login)
 
 	useEffect(function() {
 		console.log("formState", formState)
@@ -25,7 +26,10 @@ export default function LoginForm({ formVisible }) {
 				</label>
 				<span>{formState?.errors?.password?._errors}</span>
 			</div>
-			<button type="submit" className="bg-coral text-black font-semibold w-full px-4 py-2">Login</button>
+			<button disabled={isPending} type="submit" className={`${isPending ? "bg-ash" : "bg-coral"} text-black font-semibold w-full px-4 py-2`}>
+				{isPending && <PacmanLoader />}
+				Login
+			</button>
 			<span>{formState?.errors}</span>
 		</form>
 	)

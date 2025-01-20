@@ -1,5 +1,6 @@
 "use server"
 import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 import z from "zod"
 
 export default async function Login(formState, formData) {
@@ -25,37 +26,34 @@ export default async function Login(formState, formData) {
 		}
 	}
 
-	try {
-		const response = await fetch("http://localhost:4000/auth/token", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json"
-			},
-			body: JSON.stringify({
-				username,
-				password
-			})
+	const response = await fetch("http://localhost:4000/auth/token", {
+		method: "POST",
+		headers: {
+			"content-type": "application/json"
+		},
+		body: JSON.stringify({
+			username,
+			password
 		})
+	})
 
-		if (response.status === 401) {
-			return {
-				success: false,
-				errors: ["Invalid username or password"]
-			}
+	if (response.status === 401) {
+		return {
+			success: false,
+			errors: ["Invalid username or password"]
 		}
+	}
 
-		if (response.ok) {
-			// håndter token, gem i cookie
-			const data = await response.json()
-			const cookieStore = await cookies()
+	if (response.statusText === "OK") {
+		// håndter token, gem i cookie
+		const data = await response.json()
+		const cookieStore = await cookies()
 
-			const now = Date().now()
-			console.log("now", now)
+		const expires = new Date(data.validUntil)
 
-			cookieStore.set("fitness_uid", data.userId, { maxAge: data.validUntil / 1000 })
-			cookieStore.set("fitness_token", data.token, { maxAge: data.validUntil / 1000 })
-		}
-	} catch (error) {
-		
+		cookieStore.set("fitness_uid", data.userId, { expires })
+		cookieStore.set("fitness_token", data.token, { expires })
+
+		redirect("/my-schedule")
 	}
 }

@@ -3,10 +3,14 @@ import Link from "next/link"
 import { useState } from "react"
 import { LuAlignRight, LuX } from "react-icons/lu"
 import LoginForm from "./login-form"
+import { useCookies } from "react-cookie"
+import { useRouter } from "next/navigation"
 
 export default function Navigation() {
 	const [isOpen, setIsOpen] = useState(false)
 	const [formVisible, setFormVisible] = useState(false)
+	const [cookies, setCookie, removeCookie] = useCookies(["fitness_token", "fitness_uid"])
+	const router = useRouter()
 
 	function clickHandler() {
 		setIsOpen(!isOpen)
@@ -14,6 +18,13 @@ export default function Navigation() {
 
 	function showForm() {
 		setFormVisible(!formVisible)
+	}
+
+	function handleLogout() {
+		removeCookie("fitness_token")
+		removeCookie("fitness_uid")
+		router.push("/")
+		clickHandler()
 	}
 
 	return (
@@ -31,16 +42,18 @@ export default function Navigation() {
 
 					<ul className="text-center text-lg flex flex-col gap-4">
 						<li>
-							<Link href="/">Home</Link>
+							<Link href="/" onClick={clickHandler}>Home</Link>
 						</li>
 						<li>
-							<Link href="/">Search</Link>
+							<Link href="/search" onClick={clickHandler}>Search</Link>
 						</li>
+						{(cookies.fitness_token && cookies.fitness_uid) && <li>
+							<Link href="/my-schedule" onClick={clickHandler}>My Schedule</Link>
+						</li>}
 						<li>
-							<Link href="/">My Schedule</Link>
-						</li>
-						<li>
-							<button onClick={showForm}>Login</button>
+							{cookies.fitness_token && cookies.fitness_uid
+							? <button onClick={handleLogout}>Log out</button>
+							: <button onClick={showForm}>Log in</button>}
 						</li>
 					</ul>
 

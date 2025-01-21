@@ -59,6 +59,7 @@ export default async function Class({ params }) {
 					{data.classTime}
 				</small>
 			</p>
+			<p>{data.classDescription}</p>
 		</>
 	)
 }

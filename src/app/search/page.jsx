@@ -1,5 +1,4 @@
-import SearchInput from "@/components/search-input";
-import Link from "next/link";
+import SearchFunction from "@/components/search-function"
 
 export default async function Search() {
 	const response = await fetch("http://localhost:4000/api/v1/classes")
@@ -8,8 +7,7 @@ export default async function Search() {
 	return (
 		<>
 			<h1>Search</h1>
-			<SearchInput />
-			{/* <ClassList /> */}
+			<SearchFunction classes={classes} />
 		</>
 	)
 }

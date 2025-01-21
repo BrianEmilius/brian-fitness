@@ -2,10 +2,16 @@
 
 import { useContext } from "react"
 import { SearchContext } from "./search-function"
-import ClassCard from "./class-card"
+//import ClassCard from "./class-card"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/bundle"
+import dynamic from "next/dynamic"
+import { HashLoader } from "react-spinners"
+
+const ClassCard = dynamic(() => import("./class-card"), {
+	loading: () => <HashLoader />
+})
 
 export default function SearchResults({ classes }) {
 	const { searchText } = useContext(SearchContext)

@@ -2,9 +2,12 @@
 import Link from "next/link"
 import { useState } from "react"
 import { LuAlignRight, LuX } from "react-icons/lu"
-import LoginForm from "./login-form"
+//import LoginForm from "./login-form"
 import { useCookies } from "react-cookie"
 import { useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
+
+const LoginForm = dynamic(() => import("./login-form"))
 
 export default function Navigation() {
 	const [isOpen, setIsOpen] = useState(false)

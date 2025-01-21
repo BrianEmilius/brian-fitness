@@ -5,6 +5,8 @@ export default async function Home() {
   const response = await fetch("http://localhost:4000/api/v1/classes")
   const classes = await response.json()
 
+  //throw new Error("BLARGH!!")
+
   return (
     <>
       <h1>Classes</h1>

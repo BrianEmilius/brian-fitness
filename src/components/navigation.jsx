@@ -32,37 +32,35 @@ export default function Navigation({ className }) {
 
 	return (
 		<>
-			<button onClick={clickHandler} aria-label="Menu button" className={className}>
+			<button onClick={clickHandler} aria-label="Menu button" className={className + " lg:hidden"}>
 				<LuAlignRight />
 				<span className="sr-only">Menu button</span>
 			</button>
-			{isOpen && (
-				<nav className="h-screen bg-white absolute z-50 inset-0 text-right p-8">
-					<button onClick={clickHandler} aria-label="Close menu">
-						<LuX className="text-ash" size={40} />
-						<span className="sr-only">Close menu</span>
-					</button>
+			<nav className={`${isOpen ? "block" : "hidden"} tissemyre:bg-yellow-400 lg:block lg:relative lg:w-screen lg:h-[100px] h-screen bg-white absolute z-50 inset-0 text-right p-8`}>
+				<button onClick={clickHandler} aria-label="Close menu" className="lg:hidden">
+					<LuX className="text-ash" size={40} />
+					<span className="sr-only">Close menu</span>
+				</button>
 
-					<ul className="text-center text-lg flex flex-col gap-4">
-						<li>
-							<Link href="/" onClick={clickHandler}>Home</Link>
-						</li>
-						<li>
-							<Link href="/search" onClick={clickHandler}>Search</Link>
-						</li>
-						{(cookies.fitness_token && cookies.fitness_uid) && <li>
-							<Link href="/my-schedule" onClick={clickHandler}>My Schedule</Link>
-						</li>}
-						<li>
-							{cookies.fitness_token && cookies.fitness_uid
-								? <button onClick={handleLogout}>Log out</button>
-								: <button onClick={showForm}>Log in</button>}
-						</li>
-					</ul>
+				<ul className="text-center text-lg flex flex-col lg:flex-row lg:justify-end gap-4">
+					<li>
+						<Link href="/" onClick={clickHandler}>Home</Link>
+					</li>
+					<li>
+						<Link href="/search" onClick={clickHandler}>Search</Link>
+					</li>
+					{(cookies.fitness_token && cookies.fitness_uid) && <li>
+						<Link href="/my-schedule" onClick={clickHandler}>My Schedule</Link>
+					</li>}
+					<li>
+						{cookies.fitness_token && cookies.fitness_uid
+							? <button onClick={handleLogout}>Log out</button>
+							: <button onClick={showForm}>Log in</button>}
+					</li>
+				</ul>
 
-					{formVisible && <LoginForm formvisible={formVisible} />}
-				</nav>
-			)}
+				{formVisible && <LoginForm formvisible={formVisible} />}
+			</nav>
 		</>
 	)
 }

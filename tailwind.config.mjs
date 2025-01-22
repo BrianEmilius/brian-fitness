@@ -14,6 +14,9 @@ export default {
       "2xl": "62px",
     },
     extend: {
+      screens: {
+        "tissemyre": "1100px"
+      },
       colors: {
         "coral": "#F4A88E",
         "ash": "#E4E4E4"
@@ -21,7 +24,7 @@ export default {
     },
   },
   plugins: [
-    function({ addVariant }) {
+    function ({ addVariant }) {
       addVariant("peer-not-empty", "&:not([value=''])")
     }
   ],

@@ -15,7 +15,7 @@ export default function ClassCard({ element }) {
 		fetch(`https://brian-trainer-api.onrender.com/api/v1/classes/${element.id}/ratings`)
 			.then(response => response.json())
 			.then(data => setRatings(data))
-	}, [])
+	}, [element.id])
 
 	return (
 		<Link href={`/class/${element.id}`}>

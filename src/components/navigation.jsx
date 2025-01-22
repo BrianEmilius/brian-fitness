@@ -37,7 +37,7 @@ export default function Navigation({ className }) {
 				<span className="sr-only">Menu button</span>
 			</button>
 			{isOpen && (
-				<nav className="h-screen bg-white absolute z-50 inset-0 text-right p-8" aria-expanded={isOpen}>
+				<nav className="h-screen bg-white absolute z-50 inset-0 text-right p-8">
 					<button onClick={clickHandler} aria-label="Close menu">
 						<LuX className="text-ash" size={40} />
 						<span className="sr-only">Close menu</span>

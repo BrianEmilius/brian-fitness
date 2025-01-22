@@ -6,12 +6,12 @@ import PacmanLoader from "react-spinners/PacmanLoader"
 export default function LoginForm({ formVisible }) {
 	const [formState, formAction, isPending] = useActionState(Login)
 
-	useEffect(function() {
+	useEffect(function () {
 		console.log("formState", formState)
 	}, [formState])
 
 	return (
-		<form action={formAction} className="flex flex-col items-center" aria-expanded={formVisible}>
+		<form action={formAction} className="flex flex-col items-center">
 			<div className="mt-[2rem] w-full">
 				<label className="relative text-md">
 					<input type="text" name="username" className="border peer w-full" />

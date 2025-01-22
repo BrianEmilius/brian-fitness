@@ -9,7 +9,7 @@ export default async function MySchedule() {
 	const token = cookieStore.get("fitness_token")
 	const uid = cookieStore.get("fitness_uid")
 
-	const response = await fetch(`http://localhost:4000/api/v1/users/${uid.value}`, {
+	const response = await fetch(`https://brian-trainer-api.onrender.com/api/v1/users/${uid.value}`, {
 		headers: {
 			Authorization: `Bearer ${token.value}`
 		}

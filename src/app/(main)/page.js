@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default async function Home() {
 
-  const response = await fetch("http://localhost:4000/api/v1/classes")
+  const response = await fetch("https://brian-trainer-api.onrender.com/api/v1/classes")
   const classes = await response.json()
 
   //throw new Error("BLARGH!!")

@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export async function generateMetadata({ params }) {
 	const id = (await params).id
-	const classResponse = await fetch(`http://localhost:4000/api/v1/classes/${id}`)
+	const classResponse = await fetch(`https://brian-trainer-api.onrender.com/api/v1/classes/${id}`)
 	const data = await classResponse.json()
 
 	return {
@@ -17,9 +17,9 @@ export async function generateMetadata({ params }) {
 export default async function Class({ params }) {
 	const { id } = await params
 
-	const classResponse = await fetch(`http://localhost:4000/api/v1/classes/${id}`)
+	const classResponse = await fetch(`https://brian-trainer-api.onrender.com/api/v1/classes/${id}`)
 	const data = await classResponse.json()
-	const ratingResponse = await fetch(`http://localhost:4000/api/v1/classes/${id}/ratings`)
+	const ratingResponse = await fetch(`https://brian-trainer-api.onrender.com/api/v1/classes/${id}/ratings`)
 	const ratings = await ratingResponse.json()
 
 	const cookieStore = await cookies()
@@ -30,7 +30,7 @@ export default async function Class({ params }) {
 
 	async function handleLeave() {
 		"use server"
-		const response = await fetch(`http://localhost:4000/api/v1/users/${uid.value}/classes/${data.id}`, {
+		const response = await fetch(`https://brian-trainer-api.onrender.com/api/v1/users/${uid.value}/classes/${data.id}`, {
 			method: "DELETE",
 			headers: {
 				Authorization: `Bearer ${token.value}`
@@ -40,7 +40,7 @@ export default async function Class({ params }) {
 
 	async function handleSignup() {
 		"use server"
-		const response = await fetch(`http://localhost:4000/api/v1/users/${uid.value}/classes/${data.id}`, {
+		const response = await fetch(`https://brian-trainer-api.onrender.com/api/v1/users/${uid.value}/classes/${data.id}`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${token.value}`

@@ -9,7 +9,7 @@ import dynamic from "next/dynamic"
 
 const LoginForm = dynamic(() => import("./login-form"))
 
-export default function Navigation() {
+export default function Navigation({ className }) {
 	const [isOpen, setIsOpen] = useState(false)
 	const [formVisible, setFormVisible] = useState(false)
 	const [cookies, setCookie, removeCookie] = useCookies(["fitness_token", "fitness_uid"])
@@ -32,7 +32,7 @@ export default function Navigation() {
 
 	return (
 		<>
-			<button onClick={clickHandler} aria-label="Menu button">
+			<button onClick={clickHandler} aria-label="Menu button" className={className}>
 				<LuAlignRight />
 				<span className="sr-only">Menu button</span>
 			</button>
@@ -55,8 +55,8 @@ export default function Navigation() {
 						</li>}
 						<li>
 							{cookies.fitness_token && cookies.fitness_uid
-							? <button onClick={handleLogout}>Log out</button>
-							: <button onClick={showForm}>Log in</button>}
+								? <button onClick={handleLogout}>Log out</button>
+								: <button onClick={showForm}>Log in</button>}
 						</li>
 					</ul>
 

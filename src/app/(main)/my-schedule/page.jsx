@@ -1,6 +1,8 @@
 import { cookies } from "next/headers"
 import Link from "next/link"
 
+export const metadata = { title: "My Schedule" }
+
 export default async function MySchedule() {
 	const cookieStore = await cookies()
 
@@ -13,7 +15,7 @@ export default async function MySchedule() {
 		}
 	})
 	const data = await response.json()
-	
+
 	return (
 		<>
 			<h1>My Schedule</h1>

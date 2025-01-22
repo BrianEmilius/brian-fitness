@@ -15,14 +15,8 @@ const ClassCard = dynamic(() => import("./class-card"), {
 
 export default function SearchResults({ classes }) {
 	const { searchText } = useContext(SearchContext)
-	/* [{
-		className: "weights, weights, weights",
-		classDay: "wednesday",
-		trainer: { trainerName: "Jørgen" },
-		description: "dette er et tissemyre hold"
-	}] */
 
-	const results = classes.filter(function(element) {
+	const results = classes.filter(function (element) {
 		if (element.className.toLowerCase().includes(searchText.toLowerCase())) return element
 		if (element.classDescription.toLowerCase().includes(searchText.toLowerCase())) return element
 		if (element.classDay.toLowerCase().includes(searchText.toLowerCase())) return element

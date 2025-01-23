@@ -19,7 +19,7 @@ export default {
       },
       colors: {
         "coral": "#F4A88E",
-        "ash": "#E4E4E4"
+        "ash": "#E4E4E4",
       },
     },
   },

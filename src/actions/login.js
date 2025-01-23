@@ -29,6 +29,7 @@ export default async function Login(formState, formData) {
 	}
 
 	const response = await fetch("https://brian-trainer-api.onrender.com/auth/token", {
+		signal: AbortSignal.timeout(30000),
 		method: "POST",
 		headers: {
 			"content-type": "application/json"

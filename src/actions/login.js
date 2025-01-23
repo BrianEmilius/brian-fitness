@@ -55,5 +55,8 @@ export default async function Login(formState, formData) {
 		cookieStore.set("fitness_token", data.token, { expires })
 
 		redirect("/my-schedule")
+	} else {
+		console.error("NÆH!!", response.statusText)
+		throw new Error("Auth error")
 	}
 }

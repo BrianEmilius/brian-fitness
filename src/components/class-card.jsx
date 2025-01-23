@@ -20,7 +20,9 @@ export default function ClassCard({ element }) {
 	return (
 		<Link href={`/class/${element.id}`}>
 			<Image
-				src={element.asset.url}
+				// "http://localhost:4000/file-bucket/ewf5uwo45uw-lower-abs01.jpg"
+				// "https://brian-trainer-api.onrender.com/file-bucket/ewf5uwo45uw-lower-abs01.jpg"
+				src={element.asset.url.replace("http://localhost:4000", "https://brian-trainer-api.onrender.com")}
 				width="300"
 				height="300"
 				alt=""

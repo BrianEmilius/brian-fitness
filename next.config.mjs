@@ -9,6 +9,13 @@ const nextConfig = {
         pathname: '/file-bucket/**',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'brian-trainer-api.onrender.com',
+        port: '',
+        pathname: '/file-bucket/**',
+        search: '',
+      },
     ],
   },
   eslint: {

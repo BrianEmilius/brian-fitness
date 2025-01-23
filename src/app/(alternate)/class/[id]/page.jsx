@@ -51,7 +51,7 @@ export default async function Class({ params }) {
 	return (
 		<>
 			<div className="grid grid-cols-2 grid-rows-3">
-				<Image priority src={data.asset.url} width="4992" height="3328" alt="" className="w-full col-start-1 row-start-1 col-end-3 row-end-4" />
+				<Image priority src={data.asset.url.replace("http://localhost:4000", "https://brian-trainer-api.onrender.com")} width="4992" height="3328" alt="" className="w-full col-start-1 row-start-1 col-end-3 row-end-4" />
 				<Navigation className="mt-4 mr-4 self-start justify-self-end col-start-2 col-end-3 row-start-1 row-end-2" />
 				<div className="col-start-1 col-end-2 row-start-3 row-end-4">
 					<h1>{data.className}</h1>

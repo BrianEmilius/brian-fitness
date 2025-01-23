@@ -6,6 +6,8 @@ import z from "zod"
 export default async function Login(formState, formData) {
 	const [username, password] = formData.values()
 
+	console.log("formData", username, password)
+
 	const schema = z.object({
 		username: z.string().min(1, { message: "Please enter a username" }),
 		password: z.string().min(1, { message: "Please enter a password" })

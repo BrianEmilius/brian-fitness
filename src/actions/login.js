@@ -47,7 +47,7 @@ export default async function Login(formState, formData) {
 		}
 	}
 
-	if (response.statusText === "OK") {
+	if (response.status === 200) {
 		// håndter token, gem i cookie
 		const data = await response.json()
 		const cookieStore = await cookies()
